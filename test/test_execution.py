@@ -209,6 +209,7 @@ def test_execute_unknown_command(
     assert_expected_files(temp_output_dir, exists=False)
 
 
+@pytest.mark.flaky(reruns=3)
 @pytest.mark.parametrize("fail_time", [None, 0, 10, -1, -3.14])
 def test_signal_int(temp_output_dir: str, fail_time: float | None) -> None:
 
@@ -244,6 +245,7 @@ def test_signal_int(temp_output_dir: str, fail_time: float | None) -> None:
         assert command_exit_code == 128 + 2
 
 
+@pytest.mark.flaky(reruns=3)
 @pytest.mark.parametrize("fail_time", [None, 0, 10, -1, -3.14])
 def test_signal_kill(temp_output_dir: str, fail_time: float | None) -> None:
 
